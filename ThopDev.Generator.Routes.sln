@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThopDev.Generator.Routes", "ThopDev.Generator.Routes\ThopDev.Generator.Routes.csproj", "{045AA959-5586-4967-94AB-35B7E7E4B1EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "thopDev.Generator.Routes.Examples", "thopDev.Generator.Routes.Examples\thopDev.Generator.Routes.Examples.csproj", "{4EA69889-F04F-4A76-9804-7D50304CAEAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThopDev.Generator.Routes.Test", "ThopDev.Generator.Routes.Test\ThopDev.Generator.Routes.Test.csproj", "{837F6449-9BAB-4949-A74B-3938D378FD8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{045AA959-5586-4967-94AB-35B7E7E4B1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{045AA959-5586-4967-94AB-35B7E7E4B1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{045AA959-5586-4967-94AB-35B7E7E4B1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{045AA959-5586-4967-94AB-35B7E7E4B1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EA69889-F04F-4A76-9804-7D50304CAEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EA69889-F04F-4A76-9804-7D50304CAEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA69889-F04F-4A76-9804-7D50304CAEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EA69889-F04F-4A76-9804-7D50304CAEAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{837F6449-9BAB-4949-A74B-3938D378FD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{837F6449-9BAB-4949-A74B-3938D378FD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{837F6449-9BAB-4949-A74B-3938D378FD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{837F6449-9BAB-4949-A74B-3938D378FD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
