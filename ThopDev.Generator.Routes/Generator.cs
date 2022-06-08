@@ -44,7 +44,7 @@ public class Generator : ISourceGenerator
         catch (Exception e)
         {
             Debugger.Launch();
-        }
+        } 
     }
     
     private IEnumerable<Route> GetClassRoutes(WrapperAttributeSyntaxReceiver receiver, Compilation compilation)
