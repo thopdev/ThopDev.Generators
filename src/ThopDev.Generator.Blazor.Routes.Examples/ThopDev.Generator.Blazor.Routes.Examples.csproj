@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseRazorSourceGenerator>false</UseRazorSourceGenerator>
+        <RootNamespace>thopDev.Generator.Routes.Examples</RootNamespace>
+
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.5" PrivateAssets="all" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\ThopDev.Generator.Blazor.Routes.Models\ThopDev.Generator.Blazor.Routes.Models.csproj" />
+        <ProjectReference Include="..\ThopDev.Generator.Blazor.Routes\ThopDev.Generator.Blazor.Routes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\ThopDev.Generator.Utils\ThopDev.Generator.Utils.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    </ItemGroup>
+
+</Project>
