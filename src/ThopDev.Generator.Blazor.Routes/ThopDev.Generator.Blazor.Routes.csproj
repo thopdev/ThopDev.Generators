@@ -30,5 +30,12 @@
       <ProjectReference Include="..\ThopDev.Generator.Utils\ThopDev.Generator.Utils.csproj" PrivateAssets="all" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="License" />
+      <Content Include="License">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 
 </Project>
