@@ -19,6 +19,5 @@ public partial class Counter
         var  userWithName = factory.Users().WithId(12).Name().WithName("test").ToRoute();
         Console.WriteLine(user);
         Console.WriteLine(userWithName);
-
     }
 }

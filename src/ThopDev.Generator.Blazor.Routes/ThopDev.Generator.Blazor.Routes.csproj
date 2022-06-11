@@ -26,8 +26,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ThopDev.Generator.Blazor.Routes.Models\ThopDev.Generator.Blazor.Routes.Models.csproj" PrivateAssets="all" />
-      <ProjectReference Include="..\ThopDev.Generator.Utils\ThopDev.Generator.Utils.csproj" PrivateAssets="all" />
+        <ProjectReference Include="..\ThopDev.Generator.Blazor.Routes.Models\ThopDev.Generator.Blazor.Routes.Models.csproj" PrivateAssets="all" />
+        <ProjectReference Include="..\ThopDev.Generator.Utils\ThopDev.Generator.Utils.csproj">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </ProjectReference>
     </ItemGroup>
 
     <ItemGroup>

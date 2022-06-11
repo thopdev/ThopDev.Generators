@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace ThopDev.Generator.Utils.Helpers;
+namespace ThopDev.Generator.Blazor.Routes.Helpers;
 
 public interface INamespaceGenerator
 {

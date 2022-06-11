@@ -1,6 +1,6 @@
-﻿using ThopDev.Generator.Routes.ClassConverters;
-using ThopDev.Generator.Routes.Factories;
-using ThopDev.Generator.Routes.Models;
+﻿using ThopDev.Generator.Blazor.Routes.ClassConverters;
+using ThopDev.Generator.Blazor.Routes.Factories;
+using ThopDev.Generator.Blazor.Routes.Models;
 
 namespace ThopDev.Generator.Routes.Test.Models;
 

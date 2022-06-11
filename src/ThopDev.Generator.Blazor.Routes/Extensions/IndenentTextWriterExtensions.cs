@@ -1,7 +1,6 @@
-﻿using System;
-using System.CodeDom.Compiler;
+﻿using System.CodeDom.Compiler;
 
-namespace ThopDev.Generator.Routes.Extensions;
+namespace ThopDev.Generator.Blazor.Routes.Extensions;
 
 public static class IndentedTextWriterExtensions
 {
@@ -26,7 +25,8 @@ public static class IndentedTextWriterExtensions
         indentWriter.WriteLine();
     }
 
-    public static void OpenClass(this IndentedTextWriter indentWriter, string type,  string className, params string[] inherents)
+    public static void OpenClass(this IndentedTextWriter indentWriter, string type, string className,
+        params string[] inherents)
     {
         indentWriter.WriteLine($"{type} class {className}{GetInheretence(inherents)} {{");
         indentWriter.Indent++;
@@ -35,15 +35,8 @@ public static class IndentedTextWriterExtensions
 
     private static string GetInheretence(string[] inherents)
     {
-        if (inherents is null || inherents.Length == 0)
-        {
-            return string.Empty;
-        }
+        if (inherents is null || inherents.Length == 0) return string.Empty;
 
-        return $" : " + string.Join(", ", inherents);
-
-
-
+        return " : " + string.Join(", ", inherents);
     }
-    
 }

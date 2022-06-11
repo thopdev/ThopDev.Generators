@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using ThopDev.Generator.Routes.Extensions;
+using ThopDev.Generator.Blazor.Routes.Extensions;
 
-namespace ThopDev.Generator.Routes.Models;
+namespace ThopDev.Generator.Blazor.Routes.Models;
 
 public class RouteModel
 {

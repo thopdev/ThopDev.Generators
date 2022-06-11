@@ -1,4 +1,4 @@
-﻿namespace ThopDev.Generator.Routes.Models;
+﻿namespace ThopDev.Generator.Blazor.Routes.Models;
 
 public class RouteParameterSegmentModel : RouteSegmentModel
 {
@@ -11,7 +11,10 @@ public class RouteParameterSegmentModel : RouteSegmentModel
         return Name;
     }
 
-    public static implicit operator (string, string)(RouteParameterSegmentModel model) => (model.Type, model.Name);
+    public static implicit operator (string, string)(RouteParameterSegmentModel model)
+    {
+        return (model.Type, model.Name);
+    }
 }
 
 public class RouteSegmentModel

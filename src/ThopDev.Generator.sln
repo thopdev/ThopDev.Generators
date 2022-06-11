@@ -8,11 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThopDev.Generator.Routes.Bl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor.Routes", "Blazor.Routes", "{E4C64C5D-8FA7-4194-95AC-92E0FFD0AE72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThopDev.Generator.Blazor.Routes.Models", "ThopDev.Generator.Blazor.Routes.Models\ThopDev.Generator.Blazor.Routes.Models.csproj", "{34132689-2C90-4CF2-8A20-8A5AAFD86542}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThopDev.Generator.Blazor.Routes.Examples.Test", "ThopDev.Generator.Blazor.Routes.Examples.Test\ThopDev.Generator.Blazor.Routes.Examples.Test.csproj", "{50EB636E-E173-42ED-B9A9-C298B4712402}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThopDev.Generator.Utils", "ThopDev.Generator.Utils\ThopDev.Generator.Utils.csproj", "{6C9438DE-FB6F-4FE4-BD6C-208A362E7E6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,24 +28,15 @@ Global
 		{837F6449-9BAB-4949-A74B-3938D378FD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{837F6449-9BAB-4949-A74B-3938D378FD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{837F6449-9BAB-4949-A74B-3938D378FD8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34132689-2C90-4CF2-8A20-8A5AAFD86542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34132689-2C90-4CF2-8A20-8A5AAFD86542}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34132689-2C90-4CF2-8A20-8A5AAFD86542}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34132689-2C90-4CF2-8A20-8A5AAFD86542}.Release|Any CPU.Build.0 = Release|Any CPU
 		{50EB636E-E173-42ED-B9A9-C298B4712402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{50EB636E-E173-42ED-B9A9-C298B4712402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50EB636E-E173-42ED-B9A9-C298B4712402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50EB636E-E173-42ED-B9A9-C298B4712402}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C9438DE-FB6F-4FE4-BD6C-208A362E7E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C9438DE-FB6F-4FE4-BD6C-208A362E7E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C9438DE-FB6F-4FE4-BD6C-208A362E7E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C9438DE-FB6F-4FE4-BD6C-208A362E7E6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{045AA959-5586-4967-94AB-35B7E7E4B1EB} = {E4C64C5D-8FA7-4194-95AC-92E0FFD0AE72}
 		{4EA69889-F04F-4A76-9804-7D50304CAEAB} = {E4C64C5D-8FA7-4194-95AC-92E0FFD0AE72}
 		{837F6449-9BAB-4949-A74B-3938D378FD8E} = {E4C64C5D-8FA7-4194-95AC-92E0FFD0AE72}
-		{34132689-2C90-4CF2-8A20-8A5AAFD86542} = {E4C64C5D-8FA7-4194-95AC-92E0FFD0AE72}
 		{50EB636E-E173-42ED-B9A9-C298B4712402} = {E4C64C5D-8FA7-4194-95AC-92E0FFD0AE72}
 	EndGlobalSection
 EndGlobal

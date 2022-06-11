@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace ThopDev.Generator.Routes;
+namespace ThopDev.Generator.Blazor.Routes;
 
 public class WrapperAttributeSyntaxReceiver : ISyntaxReceiver
 {

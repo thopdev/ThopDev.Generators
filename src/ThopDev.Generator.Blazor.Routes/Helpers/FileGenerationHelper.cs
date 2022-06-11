@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
-using ThopDev.Generator.Utils.Constants;
+using ThopDev.Generator.Blazor.Routes.Constants;
 
-namespace ThopDev.Generator.Utils.Helpers;
+namespace ThopDev.Generator.Blazor.Routes.Helpers;
 
 public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassGenerator, IMethodGenerator,
     ICloseFileGenerator
@@ -27,7 +27,9 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
     public IClassGenerator AddConst(Accessibility accessibility, string type, string name, string value)
     {
         _indentedTextWriter.Write($"{accessibility.ToString().ToLower()} const {type} {name} = ");
-        _indentedTextWriter.Write(type == NativeTypes.String ? $"{Symbols.Quotation}{value}{Symbols.Quotation}" : value);
+        _indentedTextWriter.Write(type == NativeTypes.String
+            ? $"{Symbols.Quotation}{value}{Symbols.Quotation}"
+            : value);
         _indentedTextWriter.WriteLine(";");
         return this;
     }
@@ -41,9 +43,7 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
         _indentedTextWriter.Write(")");
 
         if (baseParameters is not null && baseParameters.Any())
-        {
             _indentedTextWriter.Write($": base({string.Join(", ", baseParameters)})");
-        }
         _indentedTextWriter.WriteLine();
 
         _indentedTextWriter.WriteLine("{");
@@ -58,7 +58,7 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
         _indentedTextWriter.Write(string.Join(", ",
             parameters?.Select(parameter => $"{parameter.Item1} {parameter.Item2}") ?? Array.Empty<string>()));
         _indentedTextWriter.WriteLine(")");
-        
+
         _indentedTextWriter.WriteLine("{");
         Indent();
         return this;
@@ -89,6 +89,14 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
         _indentedTextWriter.WriteLine("{");
         _indentedTextWriter.Indent++;
         return this;
+    }
+
+
+    public void Dispose()
+    {
+        GC.SuppressFinalize(this);
+        _indentedTextWriter.Dispose();
+        _textWriter.Dispose();
     }
 
     public IMethodGenerator Write(string value)
@@ -135,6 +143,7 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
             _indentedTextWriter.Write(" : ");
             _indentedTextWriter.Write(string.Join(", ", inherits));
         }
+
         _indentedTextWriter.WriteLine();
         _indentedTextWriter.WriteLine("{");
         Indent();
@@ -151,13 +160,5 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
     public static IFileGenerator Create()
     {
         return new FileGenerationHelper();
-    }
-
-
-    public void Dispose()
-    {
-        GC.SuppressFinalize(this);
-        _indentedTextWriter.Dispose();
-        _textWriter.Dispose();
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ThopDev.Generator.Utils.Helpers;
+namespace ThopDev.Generator.Blazor.Routes.Helpers;
 
 public interface IFileGenerator : IDisposable
 {

@@ -1,4 +1,4 @@
-﻿namespace ThopDev.Generator.Utils.Constants;
+﻿namespace ThopDev.Generator.Blazor.Routes.Constants;
 
 public static class NativeTypes
 {

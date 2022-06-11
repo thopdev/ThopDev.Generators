@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using ThopDev.Generator.Routes.ClassConverters;
-using ThopDev.Generator.Routes.Factories;
-using ThopDev.Generator.Routes.Models;
+using ThopDev.Generator.Blazor.Routes.ClassConverters;
+using ThopDev.Generator.Blazor.Routes.Factories;
+using ThopDev.Generator.Blazor.Routes.Models;
+using ThopDev.Generator.Blazor.Routes.Routing;
 
-namespace ThopDev.Generator.Routes;
+namespace ThopDev.Generator.Blazor.Routes;
 
 [Generator]
 public class Generator : ISourceGenerator
 {
     private readonly RouteFactory _routeFactory;
     private readonly RouteGroupingFactory _routeGroupingFactory;
-    
+
     public Generator()
     {
         _routeGroupingFactory = new RouteGroupingFactory();
@@ -40,7 +40,8 @@ public class Generator : ISourceGenerator
             // ReSharper disable once PossibleNullReferenceException
             var textWriter = ClassConverter.CreateFactoryClassString(groups);
             context.AddSource("NavigationFactory.g.cs", textWriter);
-            
+            context.AddSource("RoutingBase.g.cs", StaticFiles.RoutingBase);
+
         }
 #pragma warning disable CS0168
         catch (Exception e)
@@ -49,7 +50,6 @@ public class Generator : ISourceGenerator
             Debugger.Launch();
         }
     }
-
 
 
     private IEnumerable<RouteModel> GetClassRoutes(WrapperAttributeSyntaxReceiver receiver, Compilation compilation)

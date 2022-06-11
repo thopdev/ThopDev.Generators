@@ -1,21 +1,15 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.CodeAnalysis;
-using ThopDev.Generator.Routes.Extensions;
-using ThopDev.Generator.Routes.Models;
-using ThopDev.Generator.Utils.Constants;
-using ThopDev.Generator.Utils.Helpers;
+using ThopDev.Generator.Blazor.Routes.Constants;
+using ThopDev.Generator.Blazor.Routes.Extensions;
+using ThopDev.Generator.Blazor.Routes.Helpers;
+using ThopDev.Generator.Blazor.Routes.Models;
 
-namespace ThopDev.Generator.Routes.ClassConverters;
+namespace ThopDev.Generator.Blazor.Routes.ClassConverters;
 
 public class ClassConverter
 {
-
-
     public static string CreateFactoryClassString(IEnumerable<RouteGroupingModel> routes)
     {
         var routeGroupingModels = routes as List<RouteGroupingModel> ?? routes.ToList();
@@ -31,10 +25,7 @@ public class ClassConverter
             .OpenClass(Accessibility.Public, ClassType.Class, "NavigationFactory")
             .AddConst(Accessibility.Private, NativeTypes.String, "Route", string.Empty);
 
-        foreach (var route in routeGroupingModels.Where(x => x.Parent is null))
-        {
-            navigationFactory.AddRouteMethod(route);
-        }
+        foreach (var route in routeGroupingModels.Where(x => x.Parent is null)) navigationFactory.AddRouteMethod(route);
 
         var fileToClose = navigationFactory.CloseClass();
 
@@ -46,10 +37,7 @@ public class ClassConverter
                 .OpenConstructor(Accessibility.Internal, new[] { ("string", "route") }, new[] { "route" })
                 .CloseMethod();
 
-            foreach (var subRoute in routeGroup.SubRoutes)
-            {
-                routeClass.AddRouteMethod(subRoute);
-            }
+            foreach (var subRoute in routeGroup.SubRoutes) routeClass.AddRouteMethod(subRoute);
 
             routeClass.CloseClass();
         }

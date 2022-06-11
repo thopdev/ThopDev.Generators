@@ -16,7 +16,6 @@
     <ItemGroup>
         <ProjectReference Include="..\ThopDev.Generator.Blazor.Routes.Models\ThopDev.Generator.Blazor.Routes.Models.csproj" />
         <ProjectReference Include="..\ThopDev.Generator.Blazor.Routes\ThopDev.Generator.Blazor.Routes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-        <ProjectReference Include="..\ThopDev.Generator.Utils\ThopDev.Generator.Utils.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 
 </Project>

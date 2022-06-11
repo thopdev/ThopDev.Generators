@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using ThopDev.Generator.Routes.Models;
+using ThopDev.Generator.Blazor.Routes.Models;
 
-namespace ThopDev.Generator.Routes.Factories;
+namespace ThopDev.Generator.Blazor.Routes.Factories;
 
 public interface IRouteSegmentFactory
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ThopDev.Generator.Routes.Extensions;
+namespace ThopDev.Generator.Blazor.Routes.Extensions;
 
 public static class StringExtensions
 {

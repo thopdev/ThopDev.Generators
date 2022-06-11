@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ThopDev.Generator.Routes.Models;
+namespace ThopDev.Generator.Blazor.Routes.Models;
 
 public class ComponentModel
 {

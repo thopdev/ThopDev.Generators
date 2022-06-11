@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ThopDev.Generator.Routes.Models;
+using ThopDev.Generator.Blazor.Routes.Models;
 
-namespace ThopDev.Generator.Routes.Factories;
+namespace ThopDev.Generator.Blazor.Routes.Factories;
 
 public class RouteGroupingFactory
 {
     public IEnumerable<RouteGroupingModel> GetAllGroupRoutes(IEnumerable<RouteModel> routes)
     {
         var groupRoutes = GroupRoutes(routes);
-        return groupRoutes.SelectMany(route => route.GetAllSubRoutes());     
+        return groupRoutes.SelectMany(route => route.GetAllSubRoutes());
     }
 
     private IEnumerable<RouteGroupingModel> GroupRoutes(IEnumerable<RouteModel> routes, int indent = 0,
