@@ -13,7 +13,7 @@ public class NavigationFactoryTest
 
         Assert.Equal("/users/5/name/piet", result);
     }
-    
+
     [Fact]
     public void UsersWithId()
     {

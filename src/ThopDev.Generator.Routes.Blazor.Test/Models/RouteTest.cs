@@ -8,13 +8,12 @@ namespace ThopDev.Generator.Routes.Test.Models;
 public class RouteTest
 {
     [Fact]
-    public Task Test()
+    public Task ValidateGenerateFile()
     {
-    
         var component = new ComponentModel();
         var routeFactory = new RouteFactory(new RouteSegmentFactory());
         var routeGroupingFactory = new RouteGroupingFactory();
-        
+
         var routes = new[]
         {
             routeFactory.Create("/test/{id:int}", component),
@@ -22,8 +21,8 @@ public class RouteTest
         };
 
         var allGroupRoutes = routeGroupingFactory.GetAllGroupRoutes(routes);
-        
-        
+
+
         var result = ClassConverter.CreateFactoryClassString(allGroupRoutes);
 
         return Verify(result);

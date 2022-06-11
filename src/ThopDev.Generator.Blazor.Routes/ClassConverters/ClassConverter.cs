@@ -18,7 +18,6 @@ public class ClassConverter
         using var generator = FileGenerationHelper.Create();
 
         var namespaceGenerator = generator
-            .AddUsing("ThopDev.Generator.Blazor.Routes.Models.Routing")
             .OpenNamespace("ThopDev.Generator.Blazor.Routes.Models.Routing");
 
         var navigationFactory = namespaceGenerator

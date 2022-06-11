@@ -5,9 +5,9 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ThopDev.Generator.Blazor.Routes.ClassConverters;
+using ThopDev.Generator.Blazor.Routes.Constants;
 using ThopDev.Generator.Blazor.Routes.Factories;
 using ThopDev.Generator.Blazor.Routes.Models;
-using ThopDev.Generator.Blazor.Routes.Routing;
 
 namespace ThopDev.Generator.Blazor.Routes;
 
@@ -30,25 +30,16 @@ public class Generator : ISourceGenerator
 
     public void Execute(GeneratorExecutionContext context)
     {
-        try
-        {
-            var receiver = context.SyntaxReceiver as WrapperAttributeSyntaxReceiver;
-            var compilation = context.Compilation;
+        var receiver = context.SyntaxReceiver as WrapperAttributeSyntaxReceiver;
+        var compilation = context.Compilation;
 
-            var routes = GetClassRoutes(receiver, compilation).ToList();
-            var groups = _routeGroupingFactory.GetAllGroupRoutes(routes);
-            // ReSharper disable once PossibleNullReferenceException
-            var textWriter = ClassConverter.CreateFactoryClassString(groups);
-            context.AddSource("NavigationFactory.g.cs", textWriter);
-            context.AddSource("RoutingBase.g.cs", StaticFiles.RoutingBase);
+        var routes = GetClassRoutes(receiver, compilation).ToList();
+        var groups = _routeGroupingFactory.GetAllGroupRoutes(routes);
+        // ReSharper disable once PossibleNullReferenceException
+        var textWriter = ClassConverter.CreateFactoryClassString(groups);
+        context.AddSource("NavigationFactory.g.cs", textWriter);
+        context.AddSource("RoutingBase.g.cs", StaticFiles.RoutingBase);
 
-        }
-#pragma warning disable CS0168
-        catch (Exception e)
-#pragma warning restore CS0168
-        {
-            Debugger.Launch();
-        }
     }
 
 
