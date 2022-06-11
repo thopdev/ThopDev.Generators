@@ -5,7 +5,7 @@
         <Version>0.0.6</Version>
         <PackageLicenseFile>License.md</PackageLicenseFile>
         <PackageIcon>icon.png</PackageIcon>
-
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
 
