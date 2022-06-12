@@ -1,4 +1,5 @@
-﻿---
+![Banner](https://user-images.githubusercontent.com/9268249/173248498-e8f8fd50-e14e-4359-a8e0-21ea63df98ba.png)
+---
 # ThopDev.SourceGenerator.Blazor.Routes
 This package uses source generation to create strongly typed methods to generate your routes.   
 
