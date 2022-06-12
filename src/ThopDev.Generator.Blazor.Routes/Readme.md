@@ -5,6 +5,10 @@ This package uses source generation to create strongly typed methods to generate
 
 [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ThopDev.Generator.Blazor.Routes)](https://www.nuget.org/packages/ThopDev.Generator.Blazor.Routes/)
 
+# Warning!
+This package is still in beta! 
+_I'm working hard to improve this package but it still contain bugs. If you find any please contact me so we can fix it!_
+
 # Usage
 To start define the routes on the code behind component. Currently no support for .razor page.
 Example:
