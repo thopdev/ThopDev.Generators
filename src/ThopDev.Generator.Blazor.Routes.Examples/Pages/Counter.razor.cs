@@ -12,11 +12,12 @@ public partial class Counter
     protected override void OnInitialized()
     {
         var factory = new NavigationFactory();
+        
         // /users/5
         var user = factory.Users().WithId(5).ToRoute();
+        
         // /users/12/name/test
         var userWithName = factory.Users().WithId(12).Name().WithName("test").ToRoute();
-        Console.WriteLine(user);
-        Console.WriteLine(userWithName);
+
     }
 }

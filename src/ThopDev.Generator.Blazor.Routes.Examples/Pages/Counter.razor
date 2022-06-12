@@ -1,25 +1,14 @@
 ﻿@page "/counter"
+@using ThopDev.Generator.Blazor.Routes.Models.Routing
 
 
-<PageTitle>Counter</PageTitle>
-
-<h1>Counter</h1>
-
-<p role="status">Current count: @currentCount</p>
-@bla
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
 
-    [Parameter]
-    public int Id { get; set; }
-
-    private string? bla;
-    private int? currentCount;
-
-    private void IncrementCount()
+    private void NavigateToFirst()
     {
-        currentCount++;
+        var navigationFactory = new NavigationFactory();
+        navigationFactory.Users().WithId(2).Name().WithName("asd");
     }
 
 }
