@@ -64,6 +64,16 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
         return this;
     }
 
+    public IClassGenerator OpenInterfaceMethod(Accessibility accessibility, string returnType, string name,
+        (string, string)[] parameters = null)
+    {
+        _indentedTextWriter.Write($"{accessibility.ToString().ToLower()} {returnType} {name}(");
+        _indentedTextWriter.Write(string.Join(", ",
+            parameters?.Select(parameter => $"{parameter.Item1} {parameter.Item2}") ?? Array.Empty<string>()));
+        _indentedTextWriter.WriteLine(");");
+        return this;
+    }
+
     public INamespaceGenerator CloseClass()
     {
         Outdent();
