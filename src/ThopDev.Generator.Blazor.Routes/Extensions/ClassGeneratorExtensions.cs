@@ -23,4 +23,14 @@ public static class ClassGeneratorExtensions
 
         return generator;
     }
+    public static IClassGenerator AddRouteInterfaceMethod(this IClassGenerator generator, RouteGroupingModel route)
+    {
+        if (route.Segment is RouteParameterSegmentModel parameter)
+            generator.OpenInterfaceMethod(Accessibility.Public, route.GetRouteClassName(), route.Name,
+                new (string, string)[] { parameter });
+        else
+            generator.OpenInterfaceMethod(Accessibility.Public, route.GetRouteClassName(), route.Name);
+
+        return generator;
+    }
 }

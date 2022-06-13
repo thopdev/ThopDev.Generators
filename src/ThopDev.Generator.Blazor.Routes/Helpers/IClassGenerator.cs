@@ -12,5 +12,8 @@ public interface IClassGenerator
     public IMethodGenerator OpenMethod(Accessibility accessibility, string returnType, string name,
         (string, string)[] parameters = null);
 
+    public IClassGenerator OpenInterfaceMethod(Accessibility accessibility, string returnType, string name,
+        (string, string)[] parameters = null);
+    
     public INamespaceGenerator CloseClass();
 }

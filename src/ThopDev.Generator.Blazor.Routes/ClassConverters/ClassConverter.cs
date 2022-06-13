@@ -21,12 +21,19 @@ public class ClassConverter
             .OpenNamespace("ThopDev.Generator.Blazor.Routes.Models.Routing");
 
         var navigationFactory = namespaceGenerator
-            .OpenClass(Accessibility.Public, ClassType.Class, "NavigationFactory")
+            .OpenClass(Accessibility.Public, ClassType.Class, "NavigationFactory", "INavigationFactory")
             .AddConst(Accessibility.Private, NativeTypes.String, "Route", string.Empty);
 
         foreach (var route in routeGroupingModels.Where(x => x.Parent is null)) navigationFactory.AddRouteMethod(route);
 
         var fileToClose = navigationFactory.CloseClass();
+
+        var navigationFactoryInterface = namespaceGenerator
+            .OpenClass(Accessibility.Public, ClassType.Interface, "INavigationFactory");
+
+        foreach (var route in routeGroupingModels.Where(x => x.Parent is null)) navigationFactoryInterface.AddRouteInterfaceMethod(route);
+
+        fileToClose = navigationFactoryInterface.CloseClass();
 
         foreach (var routeGroup in routeGroupingModels)
         {
