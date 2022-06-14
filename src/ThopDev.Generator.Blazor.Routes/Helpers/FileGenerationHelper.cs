@@ -52,11 +52,11 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
     }
 
     public IMethodGenerator OpenMethod(Accessibility accessibility, string returnType, string name,
-        (string, string)[] parameters = null)
+        MethodParameter[] parameters = null)
     {
         _indentedTextWriter.Write($"{accessibility.ToString().ToLower()} {returnType} {name}(");
         _indentedTextWriter.Write(string.Join(", ",
-            parameters?.Select(parameter => $"{parameter.Item1} {parameter.Item2}") ?? Array.Empty<string>()));
+            parameters?.Select(p => p.ToString()) ?? Array.Empty<string>()));
         _indentedTextWriter.WriteLine(")");
 
         _indentedTextWriter.WriteLine("{");
