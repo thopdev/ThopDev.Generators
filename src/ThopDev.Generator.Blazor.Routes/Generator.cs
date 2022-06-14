@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ThopDev.Generator.Blazor.Routes.ClassConverters;
 using ThopDev.Generator.Blazor.Routes.Constants;
@@ -30,16 +31,23 @@ public class Generator : ISourceGenerator
 
     public void Execute(GeneratorExecutionContext context)
     {
-        var receiver = context.SyntaxReceiver as WrapperAttributeSyntaxReceiver;
-        var compilation = context.Compilation;
+        try
+        {
+            var receiver = context.SyntaxReceiver as WrapperAttributeSyntaxReceiver;
+            var compilation = context.Compilation;
 
-        var routes = GetClassRoutes(receiver, compilation).ToList();
-        var groups = _routeGroupingFactory.GetAllGroupRoutes(routes);
-        // ReSharper disable once PossibleNullReferenceException
-        var textWriter = ClassConverter.CreateFactoryClassString(groups);
-        context.AddSource("NavigationFactory.g.cs", textWriter);
-        context.AddSource("RoutingBase.g.cs", StaticFiles.RoutingBase);
-
+            var routes = GetClassRoutes(receiver, compilation).ToList();
+            var groups = _routeGroupingFactory.GetAllGroupRoutes(routes);
+            // ReSharper disable once PossibleNullReferenceException
+            var textWriter = ClassConverter.CreateFactoryClassString(groups);
+            context.AddSource("NavigationFactory.g.cs", textWriter);
+            context.AddSource("RoutingBase.g.cs", StaticFiles.RoutingBase);
+        }
+        catch (Exception e)
+        {
+            Debugger.Launch();
+            throw;
+        }
     }
 
 
@@ -47,21 +55,55 @@ public class Generator : ISourceGenerator
     {
         foreach (var routeClass in receiver.ClassToAugments)
         {
-            var component = new ComponentModel { Name = routeClass.Identifier.Text };
-            foreach (var route in GetRoutes(compilation, routeClass))
+            var semanticModel = compilation.GetSemanticModel(routeClass.SyntaxTree);
+            
+            var component = new ComponentModel { Name = routeClass.Identifier.Text, QueryParameters = GetQueryParameters(semanticModel, routeClass).ToList()};
+            foreach (var route in GetRoutes(semanticModel, routeClass))
                 yield return _routeFactory.Create(route, component);
         }
     }
 
-    private static IEnumerable<string> GetRoutes(Compilation compilation, ClassDeclarationSyntax routeClass)
+    private IEnumerable<QueryParameter> GetQueryParameters(SemanticModel semanticModel, ClassDeclarationSyntax routeClass)
     {
-        var semanticModel = compilation.GetSemanticModel(routeClass.SyntaxTree);
-        foreach (var routeAttribute in routeClass.AttributeLists.SelectMany(attr =>
-                     attr.Attributes.Where(x => x.Name.ToString() == "Route")))
+        var properties = routeClass.Members.Where(m => m.Kind() == SyntaxKind.PropertyDeclaration).Cast<PropertyDeclarationSyntax>();
+
+        foreach (var property in properties)
         {
-            var routeArg = routeAttribute?.ArgumentList?.Arguments[0];
-            var routeExpr = routeArg?.Expression;
-            if (routeExpr != null) yield return semanticModel.GetConstantValue(routeExpr).ToString();
+            var queryRouteAttributes = GetAttributes(property.AttributeLists, "SupplyParameterFromQuery");
+
+            foreach (var attr in queryRouteAttributes)
+            {
+                var name = GetAttributeParameter(attr, semanticModel) ?? property.Identifier.ValueText;
+                var type = (property.Type as PredefinedTypeSyntax)?.Keyword.ValueText ?? "string";
+                yield return new QueryParameter{Name = name, Type = type};
+            }
         }
+    }
+
+    private static IEnumerable<string> GetRoutes(SemanticModel semanticModel, ClassDeclarationSyntax routeClass)
+    {
+        var attributes = GetAttributes(routeClass.AttributeLists, "Route");
+        foreach (var routeAttribute in attributes)
+        {
+            yield return GetAttributeParameter(routeAttribute, semanticModel);
+        }
+    }
+
+    private static string GetAttributeParameter(AttributeSyntax routeAttribute, SemanticModel semanticModel)
+    {
+        var routeArg = routeAttribute?.ArgumentList?.Arguments[0];
+        var routeExpr = routeArg?.Expression;
+        if (routeExpr != null)
+        {
+            return semanticModel.GetConstantValue(routeExpr).ToString();
+        }
+
+        return null;
+    }
+
+    private static IEnumerable<AttributeSyntax> GetAttributes(SyntaxList<AttributeListSyntax> attributeList, string name)
+    {
+        return attributeList.SelectMany(attr =>
+            attr.Attributes.Where(x => x.Name.ToString() == name));
     }
 }

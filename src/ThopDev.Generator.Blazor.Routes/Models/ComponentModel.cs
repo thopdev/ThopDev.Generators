@@ -8,6 +8,8 @@ public class ComponentModel
 
     public string Name { get; set; }
 
+    public List<QueryParameter> QueryParameters { get; set; }
+
     public IReadOnlyList<RouteModel> Routes => _routes;
 
     /// <summary>
@@ -17,4 +19,10 @@ public class ComponentModel
     {
         _routes.Add(routeModel);
     }
+}
+
+public class QueryParameter
+{
+    public string Type { get; set; }
+    public string Name { get; set; }
 }

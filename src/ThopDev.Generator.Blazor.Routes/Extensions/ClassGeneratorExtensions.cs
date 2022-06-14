@@ -11,7 +11,7 @@ public static class ClassGeneratorExtensions
     {
         if (route.Segment is RouteParameterSegmentModel parameter)
             generator.OpenMethod(Accessibility.Public, route.GetRouteClassName(), route.Name,
-                    new (string, string)[] { parameter })
+                    new MethodParameter[] { new MethodParameter(parameter.Name, parameter.Type)})
                 .WriteLine($"var route = Route + \"/\" + {parameter.Name};")
                 .WriteLine($"return new {route.GetRouteClassName()}(route);")
                 .CloseMethod();
