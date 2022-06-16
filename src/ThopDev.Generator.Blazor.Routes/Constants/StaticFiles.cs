@@ -20,7 +20,6 @@ public abstract class RoutableBase : RoutingBase
     protected RoutableBase(string route) : base(route)
     {
     }
-   
 }
 ";
 }

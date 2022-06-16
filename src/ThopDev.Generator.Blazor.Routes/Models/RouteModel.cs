@@ -21,8 +21,7 @@ public class RouteModel
     public RouteSegmentModel[] Segments { get; }
     public RouteSegmentModel[] NameSegments { get; }
     public RouteParameterSegmentModel[] ParameterSegments { get; }
-
-
+    
     public ComponentModel ComponentModel { get; }
 
     public string GetParametersString()
