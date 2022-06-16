@@ -10,7 +10,12 @@ public class RouteTest
     [Fact]
     public Task ValidateGenerateFile()
     {
-        var component = new ComponentModel();
+        var component = new ComponentModel()
+        {
+            Name = "TestComponent",
+            Namespace = "ThopDev.Test",
+            QueryParameters = new List<QueryParameter>{new() {Name = "FirstName", Type = "string"}, new() {Name = "Age", Type = "int"}}
+        };
         var routeFactory = new RouteFactory(new RouteSegmentFactory());
         var routeGroupingFactory = new RouteGroupingFactory();
 
