@@ -46,7 +46,7 @@
             var route = Route + "/" + what;
             return new TestWithIdBlaIWithWhatRoute(route);
         }
-    
+    }
     public class TestWithIdBlaRoute : RoutingBase
     {
         internal TestWithIdBlaRoute(string route): base(route)
