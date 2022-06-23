@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Components;
-using ThopDev.Generator.Blazor.Routes.Models.Routing;
+using ThopDev.Generator.Blazor.Routes;
 
 namespace thopDev.Generator.Routes.Examples.Pages;
 
