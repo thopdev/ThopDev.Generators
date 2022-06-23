@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using ThopDev.Generator.Blazor.Routes.Constants;
+using ThopDev.Generator.Blazor.Routes.Models;
 
 namespace ThopDev.Generator.Blazor.Routes.Helpers;
 
@@ -34,6 +35,16 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
         return this;
     }
 
+    public IClassGenerator OpenInterfaceMethod(Accessibility accessibility, string returnType, string name,
+        (string, string)[] parameters = null)
+    {
+        _indentedTextWriter.Write($"{accessibility.ToString().ToLower()} {returnType} {name}(");
+        _indentedTextWriter.Write(string.Join(", ",
+            parameters?.Select(parameter => $"{parameter.Item1} {parameter.Item2}") ?? Array.Empty<string>()));
+        _indentedTextWriter.WriteLine(");");
+        return this;
+    }
+    
     public IMethodGenerator OpenConstructor(Accessibility accessibility, (string, string)[] parameters,
         string[] baseParameters)
     {
@@ -64,20 +75,16 @@ public class FileGenerationHelper : IFileGenerator, INamespaceGenerator, IClassG
         return this;
     }
 
-    public IClassGenerator OpenInterfaceMethod(Accessibility accessibility, string returnType, string name,
-        (string, string)[] parameters = null)
-    {
-        _indentedTextWriter.Write($"{accessibility.ToString().ToLower()} {returnType} {name}(");
-        _indentedTextWriter.Write(string.Join(", ",
-            parameters?.Select(parameter => $"{parameter.Item1} {parameter.Item2}") ?? Array.Empty<string>()));
-        _indentedTextWriter.WriteLine(");");
-        return this;
-    }
-
     public INamespaceGenerator CloseClass()
     {
         Outdent();
         _indentedTextWriter.WriteLine("}");
+        return this;
+    }
+
+    public IClassGenerator WriteSummary(string value)
+    {
+        _indentedTextWriter.WriteLine("/// " + value);
         return this;
     }
 

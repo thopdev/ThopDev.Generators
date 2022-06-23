@@ -69,5 +69,6 @@ To bypass this you can add the following code to your csproj:
 </PropertyGroup> 
 ```
 
-# Feedback and suggestions
+
+# Feedback and suggestions  
 Any suggestions, feedback or bugs reports are appreciated and can be done though: [feedback](https://github.com/thopdev/ThopDev.Generators/issues/new/choose)

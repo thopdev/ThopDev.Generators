@@ -8,6 +8,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ThopDev.Generator.Blazor.Routes.ClassConverters;
 using ThopDev.Generator.Blazor.Routes.Constants;
 using ThopDev.Generator.Blazor.Routes.Factories;
+using ThopDev.Generator.Blazor.Routes.Helpers;
 using ThopDev.Generator.Blazor.Routes.Models;
 
 namespace ThopDev.Generator.Blazor.Routes;
@@ -57,7 +58,7 @@ public class Generator : ISourceGenerator
         {
             var semanticModel = compilation.GetSemanticModel(routeClass.SyntaxTree);
             
-            var component = new ComponentModel { Name = routeClass.Identifier.Text, QueryParameters = GetQueryParameters(semanticModel, routeClass).ToList()};
+            var component = new ComponentModel { Name = routeClass.Identifier.Text , QueryParameters = GetQueryParameters(semanticModel, routeClass).ToList(), Namespace = routeClass.GetNamespace()};
             foreach (var route in GetRoutes(semanticModel, routeClass))
                 yield return _routeFactory.Create(route, component);
         }
@@ -93,12 +94,7 @@ public class Generator : ISourceGenerator
     {
         var routeArg = routeAttribute?.ArgumentList?.Arguments[0];
         var routeExpr = routeArg?.Expression;
-        if (routeExpr != null)
-        {
-            return semanticModel.GetConstantValue(routeExpr).ToString();
-        }
-
-        return null;
+        return routeExpr != null ? semanticModel.GetConstantValue(routeExpr).ToString() : null;
     }
 
     private static IEnumerable<AttributeSyntax> GetAttributes(SyntaxList<AttributeListSyntax> attributeList, string name)
