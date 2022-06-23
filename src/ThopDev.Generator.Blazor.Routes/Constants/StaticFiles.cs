@@ -3,7 +3,7 @@
 public static class StaticFiles
 {
     public const string RoutingBase = @"
-namespace ThopDev.Generator.Blazor.Routes.Models.Routing;
+namespace ThopDev.Generator.Blazor.Routes;
 
 public class RoutingBase
 {

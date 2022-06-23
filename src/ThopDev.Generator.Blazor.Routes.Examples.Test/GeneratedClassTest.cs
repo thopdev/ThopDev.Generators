@@ -1,4 +1,4 @@
-﻿using ThopDev.Generator.Blazor.Routes.Models.Routing;
+﻿using ThopDev.Generator.Blazor.Routes;
 
 namespace ThopDev.Generator.Blazor.Routes.Examples.Test;
 

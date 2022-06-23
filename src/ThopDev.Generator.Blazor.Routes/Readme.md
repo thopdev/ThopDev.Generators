@@ -46,29 +46,26 @@ string user = factory.Users().WithId(5).ToRoute();
 string userWithName = factory.Users().WithId(12).Name().WithName("test").ToRoute(searchString: "Hello", anotherName: 42);
 ```
 # Examples
-
 | Route                       | Code                                                          | Generates           | 
 |-----------------------------|---------------------------------------------------------------|---------------------|
 | /                           | factory.ToRoute();                                            | /                   |
 | /users                      | factory.Users().ToRoute();                                    | /users              |
 | /users/{id:int}             | factory.Users().WithId(5).ToRoute();                          | /users/5            |
 | /users/{id:int}/name/{name} | factory.Users().WithId(12).Name().WithName("test").ToRoute(); | /users/12/name/test |
-| /groups/roles/name          | factory.Users().Roles().Name().ToRoute();                     | /users/roles/name   |
-| /groups/foo                 | factory.Users().WithFoo().ToRoute();                          | /users/foo          |
+| /groups/roles/name          | factory.Groups().Roles().Name().ToRoute();                    | /groups/roles/name  |
+| /groups/foo                 | factory.Groups().Foo().ToRoute();                             | /groups/foo         |
 
 # Limitations
-
 In .Net 6 blazor uses source generation to code compile the .razor pages. This makes it harder to analyze it, for this
 reason, we can't create the code for those yet.
 To bypass this you can add the following code to your csproj:
 
-```csharp![Uploading Frame 6.png…]()
+```csharp
 
 <PropertyGroup>
   <UseRazorSourceGenerator>false</UseRazorSourceGenerator>
 </PropertyGroup> 
 ```
-
 
 # Feedback and suggestions  
 Any suggestions, feedback or bugs reports are appreciated and can be done though: [feedback](https://github.com/thopdev/ThopDev.Generators/issues/new/choose)
