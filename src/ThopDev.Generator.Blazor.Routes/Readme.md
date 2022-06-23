@@ -53,8 +53,8 @@ string userWithName = factory.Users().WithId(12).Name().WithName("test").ToRoute
 | /users                      | factory.Users().ToRoute();                                    | /users              |
 | /users/{id:int}             | factory.Users().WithId(5).ToRoute();                          | /users/5            |
 | /users/{id:int}/name/{name} | factory.Users().WithId(12).Name().WithName("test").ToRoute(); | /users/12/name/test |
-| /groups/roles/name          | factory.Users().Roles().Name().ToRoute();                     | /users/roles/name   |
-| /groups/foo                 | factory.Users().WithFoo().ToRoute();                          | /users/foo          |
+| /groups/roles/name          | factory.Groups().Roles().Name().ToRoute();                    | /groups/roles/name  |
+| /groups/foo                 | factory.Groups().Foo().ToRoute();                             | /groups/foo         |
 
 # Limitations
 
