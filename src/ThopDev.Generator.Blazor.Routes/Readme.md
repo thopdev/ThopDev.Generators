@@ -10,12 +10,12 @@ This package uses source generation to create strongly typed methods to generate
 # Warning!
 
 This package is still in beta!
-_I'm working hard to improve this package but it still contain bugs. If you find any please contact me so we can fix
+_I'm working hard to improve this package but it could still contains bugs. If you find any please contact me, so we can fix
 it!_
 
 # Usage
 
-To start define the routes on the code behind component. Currently no support for .razor page.
+To start, define the routes on the code behind component. Currently no support for .razor pages.
 Example:
 
 ```csharp
@@ -41,8 +41,8 @@ var userWithName = factory.Users().WithId(12).Name().WithName("test").ToRoute(se
 
 # Limitations
 
-In .Net 6 blazor uses source generation to code compile the .razor pages. This makes it harder to analyzing it, for this
-reason we can't create the code for those yet.
+In .Net 6 blazor uses source generation to code compile the .razor pages. This makes it harder to analyze it, for this
+reason, we can't create the code for those yet.
 To bypass this you can add the following code to your csproj:
 
 ```csharp
@@ -50,3 +50,6 @@ To bypass this you can add the following code to your csproj:
   <UseRazorSourceGenerator>false</UseRazorSourceGenerator>
 </PropertyGroup> 
 ```
+
+# Feedback and suggestions  
+Any suggestions, feedback or bugs reports are appreciated and can be done though: [feedback](https://github.com/thopdev/ThopDev.Generators/issues/new/choose)
