@@ -1,4 +1,4 @@
-﻿namespace ThopDev.Generator.Blazor.Routes.Models.Routing
+﻿namespace ThopDev.Generator.Blazor.Routes
 {
     public class NavigationFactory : INavigationFactory
     {
