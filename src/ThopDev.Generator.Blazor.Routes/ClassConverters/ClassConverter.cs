@@ -10,6 +10,11 @@ namespace ThopDev.Generator.Blazor.Routes.ClassConverters;
 
 public class ClassConverter
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="routes"></param>
+
     public static string CreateFactoryClassString(IEnumerable<RouteGroupingModel> routes)
     {
         var routeGroupingModels = routes as List<RouteGroupingModel> ?? routes.ToList();
@@ -18,7 +23,7 @@ public class ClassConverter
         using var generator = FileGenerationHelper.Create();
 
         var namespaceGenerator = generator
-            .OpenNamespace("ThopDev.Generator.Blazor.Routes.Models.Routing");
+            .OpenNamespace("ThopDev.Generator.Blazor.Routes");
 
         var navigationFactory = namespaceGenerator
             .OpenClass(Accessibility.Public, ClassType.Class, "NavigationFactory", "INavigationFactory")
@@ -48,7 +53,12 @@ public class ClassConverter
             {
                 var route = routeGroup.Route;
 
-
+                routeClass.WriteSummary("<summary>")
+                    .WriteSummary(
+                        $"Route from component: <see cref=\"{routeGroup.Route.ComponentModel.Namespace}.{routeGroup.Route.ComponentModel.Name}\" />")
+                    .WriteSummary("</summary>")
+                    .WriteSummary($"<returns>Route based on {routeGroup.Route.Value}</returns>");
+                
                 var method = routeClass.OpenMethod(Accessibility.Public, "string", "ToRoute",
                         route.ComponentModel.QueryParameters
                             .Select(qp => new MethodParameter(qp.Name.FirstCharToLower(), qp.Type, "default")).ToArray())
