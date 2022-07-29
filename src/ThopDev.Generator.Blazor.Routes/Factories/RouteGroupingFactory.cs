@@ -19,7 +19,7 @@ public class RouteGroupingFactory
         foreach (var group in routeModels.GroupBy(route => route.Segments[indent].Name))
         {
             var routeGrouping = new RouteGroupingModel(
-                routeModels.First().Segments[indent],
+                group.First().Segments[indent],
                 parent,
                 group.FirstOrDefault(route => route.Segments.Length == indent + 1));
 
